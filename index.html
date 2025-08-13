@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Cafetería 360° – Vocabulario Inglés</title>
+  <style>
+    html, body { margin:0; height:100%; overflow:hidden; background:#0b0b0c; font-family:system-ui, sans-serif; }
+    #ui {
+      position: fixed; top: 12px; left: 12px; width: 360px; max-width: calc(100% - 24px);
+      background: rgba(20,20,24,.75); color:#eee; backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,.08); border-radius: 12px; padding: 12px; z-index: 10;
+    }
+    #ui h2 { margin: 0 0 8px 0; font-size: 16px; }
+    #spanishName { opacity:.9; font-weight:600 }
+    #clue { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; letter-spacing: .5px;}
+    #guess { width: 100%; padding: 8px; border-radius: 8px; border: 1px solid #333; background:#121215; color:#fff; }
+    .row { display:flex; gap:8px; align-items:center; margin-top:8px; flex-wrap:wrap; }
+    button { cursor:pointer; padding:8px 10px; border-radius:8px; background:#1e293b; color:#e5e7eb; border:1px solid #334155; }
+    button:disabled { opacity:.5; cursor:not-allowed; }
+    .pill { padding:3px 8px; border-radius:999px; background:#0f172a; border:1px solid #334155; font-size:12px; }
+    #status { min-height: 20px; margin-top:8px; }
+    #scene { display:block; width:100vw; height:100vh; }
+    a { color:#93c5fd; }
+  </style>
+</head>
+<body>
+  <canvas id="scene"></canvas>
+
+  <div id="ui" aria-live="polite">
+    <h2>Objeto: <span id="spanishName">—</span></h2>
+    <div>Color: <span id="colorEn">—</span> <span class="pill" id="ipa">/ /</span></div>
+    <div id="definition" style="margin-top:6px; opacity:.85;">Haz clic en un objeto ☕🥐</div>
+
+    <div class="row" style="margin-top:10px;">
+      <div id="clue" class="pill">_ _ _ _</div>
+      <button id="hintBtn" title="Pedir pista">Pista (0/5)</button>
+      <button id="ttsBtn" title="Pronunciar">🔊 Pronunciar</button>
+    </div>
+
+    <div class="row">
+      <input id="guess" placeholder="Escribe la palabra en inglés…" autocomplete="off" />
+      <button id="checkBtn">Comprobar</button>
+    </div>
+
+    <div id="status"></div>
+  </div>
+
+  <!-- Cargar como módulo ES para habilitar imports -->
+  <script type="module" src="./src/main.mjs"></script>
+</body>
+</html>
